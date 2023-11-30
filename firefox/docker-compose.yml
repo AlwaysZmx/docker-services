@@ -18,10 +18,10 @@ services:
       - VNC_PASSWORD=abcdef1234567890
       # 设置为1启动黑暗模式
       - DARK_MODE=1
-      # 启用HTTPS
-      SECURE_CONNECTION=1
+      # 启用HTTPS 1-启用 0-禁用
+      - SECURE_CONNECTION=1
       # FireFox启动时打开的URL
-      FF_OPEN_URL=https://google.com
+      - FF_OPEN_URL=https://google.com
     ports:
       # 访问firefox的web端口
       - 5800:5800
