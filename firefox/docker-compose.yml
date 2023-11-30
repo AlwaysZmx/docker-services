@@ -1,0 +1,34 @@
+version: '3'
+services:
+  firefox:
+    container_name: firefox
+    image: jlesage/firefox
+    environment:
+      # 设置时区
+      - TZ=Asia/Hong_Kong
+      # 设置显示的宽
+      - DISPLAY_WIDTH=1920
+      # 设置显示的高
+      - DISPLAY_HEIGHT=1080
+      # 当设置为1时，应用程序将在崩溃或终止时自动重新启动。
+      - KEEP_APP_RUNNING=1
+      # 防止显示页面时中文乱码
+      - ENABLE_CJK_FONT=1
+      # VNC密码
+      - VNC_PASSWORD=abcdef1234567890
+      # 设置为1启动黑暗模式
+      - DARK_MODE=1
+      # 启用HTTPS
+      SECURE_CONNECTION=1
+      # FireFox启动时打开的URL
+      FF_OPEN_URL=https://google.com
+    ports:
+      # 访问firefox的web端口
+      - 5800:5800
+      # VNC端口
+      - 5900:5900
+    volumes:
+      # 容器挂载目录，存放firefox数据
+      - /data/firefox/config:/config:rw
+    # 设置容器的内存资源为2g
+    shm_size: 1g
